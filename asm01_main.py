@@ -58,8 +58,8 @@ if __name__ == '__main__':
 
     f.save_data(seriesData, fileName)
 
-    plotbox(seriesData)
-
+    # barchart(seriesData)
+    boxplot(seriesData)
 
 
 

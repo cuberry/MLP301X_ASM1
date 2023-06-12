@@ -124,15 +124,13 @@ class ClassGrade:
         zeroPostion = list(zip(x, y))
 
         #   Fill all zero point to df2
-        df2 = df1.copy()
         for i in zeroPostion:
-            df2.iloc[i] = 0
+            df1.iloc[i] = 0
 
-        df2.insert(loc=1, column='Exam Score', value=np.array([_ for _ in range(n)]))
-        df2['Exam Score'] = df2.sum(axis=1)
+        df1['Exam Score'] = df1.sum(axis=1)
 
         #   creat ser3 as series to return
-        ser = df2['Exam Score']
+        ser = df1['Exam Score']
         return ser
 
     def _anylytics_result(self, dataFrame):

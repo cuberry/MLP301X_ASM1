@@ -32,17 +32,29 @@ def display():
     print('-' * 40)
 
 
-def plotbox(datasns):
+def barchart(datasns):
     """
     This module is show the box plot of student grade area
     :param data: a series or dataframe
     :return: a box plot
     """
     # Vẽ biểu đồ swarm
+    x, y = list(datasns.index), datasns.values
     plt.figure(figsize=(16, 8))
-    sns.histplot(data=datasns, bins=len(datasns))
+    plt.bar(x, y)
+    plt.plot(x, y, marker='o', markersize=10,linestyle='-.', linewidth=2)
     plt.xlabel('Student Code', fontsize=16)
     plt.ylabel('Exam Score', fontsize=16)
     plt.title('Histogram of Exam Score', fontsize=18)
+
+    plt.show()
+
+def boxplot(datasns):
+    dims = list(datasns.values)
+    plt.figure(figsize=(8,8))
+    plt.boxplot(dims)
+    plt.xlabel('Student Code', fontsize=16)
+    plt.ylabel('Score', fontsize=16)
+    plt.title('Box PLot of Grade Score', fontsize=16)
 
     plt.show()
