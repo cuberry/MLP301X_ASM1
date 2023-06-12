@@ -13,7 +13,7 @@ fileName = input('Please enter the class name: ')   #public the file name
 class File:
     def __init__(self, currentDir = None):
         if not currentDir:
-            currentDir = os.getcwd()
+            currentDir = os.getcwd() + '\\Data Input\\'
         else:
             self.currentDir = currentDir
 
@@ -36,7 +36,7 @@ class File:
             quit()
         else:
             try:
-                f = open(fileName + '.txt', 'r')
+                f = open(os.getcwd() +'\\Data Input\\' + fileName + '.txt', 'r')
                 print('File is found! Processing to load the data ...')
                 rawData = [[i for i in j.split(',')] for j in f.read().split()]
                 classDf = pd.DataFrame(rawData).rename(columns={0: 'Student Code'})

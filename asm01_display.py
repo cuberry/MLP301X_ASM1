@@ -1,3 +1,11 @@
+"""
+This sub-module is used for:
+- Display the first information of Assignment with display()
+- Create the ask() function for any requirement applied
+- Draw the histogram for vision
+"""
+
+import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -24,19 +32,17 @@ def display():
     print('-' * 40)
 
 
-def plotbox(data):
+def plotbox(datasns):
     """
     This module is show the box plot of student grade area
     :param data: a series or dataframe
     :return: a box plot
     """
-    plt.hist(data)
-    # np.random.sceed(10)
-    # fig, ax = plt.subplots()
-    #
-    # ax.hist(data, bins=20, linewidth=0.5, edgecolor="white")
-    #
-    # ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
-    #        ylim=(0, 56), yticks=np.linspace(0, 56, 9))
+    # Vẽ biểu đồ swarm
+    plt.figure(figsize=(16, 8))
+    sns.histplot(data=datasns, bins=len(datasns))
+    plt.xlabel('Student Code', fontsize=16)
+    plt.ylabel('Exam Score', fontsize=16)
+    plt.title('Histogram of Exam Score', fontsize=18)
 
     plt.show()
