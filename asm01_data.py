@@ -127,6 +127,8 @@ class ClassGrade:
         for i in zeroPostion:
             df1.iloc[i] = 0
 
+        #   If we move one column to another position before calculating
+        #   It will show incorrect value
         df1['Exam Score'] = df1.sum(axis=1)
 
         #   creat ser3 as series to return

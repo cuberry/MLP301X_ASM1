@@ -58,7 +58,8 @@ if __name__ == '__main__':
 
     f.save_data(seriesData, fileName)
 
-    # barchart(seriesData)
+    #   barchart(seriesData)
+    #   Change bar chart to box plot
     boxplot(seriesData)
 
 
