@@ -21,7 +21,7 @@ class ClassGrade:
 
     def _check_student_code(self):
         """
-        Sub module to check the format of student code with below information
+        module to check the format of student code with below information
         :param
         :return: True if the student Code:
         - Start with N
@@ -38,19 +38,19 @@ class ClassGrade:
         #   Loop the DataFrame to check the valid code
         for i in range(n):
             studentCode = df.loc[i, 'Student Code']
-            if not (len(studentCode) == 9 and str(studentCode).startswith('N') \
-                and studentCode[1:].isdigit()):
+            if not (len(studentCode) == 9 and str(studentCode).startswith('N')
+                    and studentCode[1:].isdigit()):
                 df.loc[i, 'Valid St. Code'] = 'Invalid'
 
-        #   Filter the Invalid data, move to new data frame then refresh the orginal DataFrame
+        #   Filter the Invalid data, move to new data frame then refresh the original DataFrame
         filtered_dataFrame = df[df['Valid St. Code'] == 'Invalid']
 
         return filtered_dataFrame
 
     def _check_answer_quantity(self):
         """
-        sub moduel to check the quantity of student's answer
-        :param studentAnswer: a row of DataFrame
+        module to check the quantity of student's answer
+        :param:
         :return: True if the data which contains more than 25 answers
         """
         df = self.classDf.copy()
@@ -102,7 +102,7 @@ class ClassGrade:
         #   Main DataFrame, cleaned by delete the surplus columns
         #   set the Student Code to Index
         df = self._clean_data(self.classDf)
-        n = len(df) #   Length of original data
+        n = len(df)  # Length of original data
         df0 = df.copy()
         df0.set_index('Student Code', inplace=True)
 
@@ -135,5 +135,6 @@ class ClassGrade:
         ser = df1['Exam Score']
         return ser
 
-    def _anylytics_result(self, dataFrame):
+    @staticmethod
+    def _analytics_result(dataFrame):
         return max(dataFrame), min(dataFrame), dataFrame.mean(), dataFrame.median()

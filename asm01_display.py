@@ -9,6 +9,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 def ask(prompt, retries=4):
     while True:
         check = input(prompt)
@@ -32,26 +33,27 @@ def display():
     print('-' * 40)
 
 
-def barchart(datasns):
+def barchart(data):
     """
     This module is show the box plot of student grade area
     :param data: a series or dataframe
     :return: a box plot
     """
     # Vẽ biểu đồ swarm
-    x, y = list(datasns.index), datasns.values
+    x, y = list(data.index), data.values
     plt.figure(figsize=(16, 8))
     plt.bar(x, y)
-    plt.plot(x, y, marker='o', markersize=10,linestyle='-.', linewidth=2)
+    plt.plot(x, y, marker='o', markersize=10, linestyle='-.', linewidth=2)
     plt.xlabel('Student Code', fontsize=16)
     plt.ylabel('Exam Score', fontsize=16)
     plt.title('Histogram of Exam Score', fontsize=18)
 
     plt.show()
 
-def boxplot(datasns):
-    dims = list(datasns.values)
-    plt.figure(figsize=(8,8))
+
+def boxplot(data):
+    dims = list(data.values)
+    plt.figure(figsize=(8, 8))
     plt.boxplot(dims)
     plt.xlabel('Student Code', fontsize=16)
     plt.ylabel('Score', fontsize=16)
