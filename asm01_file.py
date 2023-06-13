@@ -8,15 +8,17 @@ import os
 import pandas as pd
 from asm01_display import *
 
-fileName = input('Please enter the class name: ')   #public the file name
+fileName = input('Please enter the class name: ')  # public the file name
+
 
 class File:
-    def __init__(self, currentDir = None):
+    def __init__(self, currentDir=None):
         if not currentDir:
-            currentDir = os.getcwd() + '\\Data Input\\'
+            os.getcwd() + '\\Data Input\\'
         else:
             self.currentDir = currentDir
 
+    @property
     def load_data(self):
         """
         This module is to check the availability of file
@@ -36,7 +38,7 @@ class File:
             quit()
         else:
             try:
-                f = open(os.getcwd() +'\\Data Input\\' + fileName + '.txt', 'r')
+                f = open(os.getcwd() + '\\Data Input\\' + fileName + '.txt', 'r')
                 print('File is found! Processing to load the data ...')
                 rawData = [[i for i in j.split(',')] for j in f.read().split()]
                 classDf = pd.DataFrame(rawData).rename(columns={0: 'Student Code'})
@@ -48,17 +50,19 @@ class File:
                 print('File is not found!')
                 quit()
 
-    def save_data(self, data, fileName):
+    @staticmethod
+    def save_data(data, executiveFile):
         """
 
         :param data: DataFrame or Series of result
-        :param fileName: file name to save the analysis result
+        :param executiveFile: file name to save the analysis result
         :return: the fileName with "class*_grade.txt"
         """
         path = os.getcwd() + '\\Expected Output\\'
-        data.to_csv(path + fileName + '_grade.txt', sep=',', header=False, index=True)
+        data.to_csv(path + executiveFile + '_grade.txt', sep=',', header=False, index=True)
 
-    def load_full_result_data(self):
+    @staticmethod
+    def load_full_result_data():
         #   Data must be available at the same directory
         try:
             with os.scandir() as it:
@@ -75,10 +79,10 @@ class File:
             #   If the file is not found, try to re-search in 4 times
             ask('Path is not found! Do you want to try another? Y/n: ')
 
-    def load_result(self, fileName):
+    def load_result(self, file):
         """
         This module is used to load the result of data to view
-        :param fileName:
+        :param file:
         :return: the display of result in matplot lib or table dataframe
         """
         pass

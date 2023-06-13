@@ -17,7 +17,7 @@ if __name__ == '__main__':
     #   Setup an object to call the file
     #   Then load data to dataframe
     f = File()
-    myDataFrame = f.load_data()
+    myDataFrame = f.load_data
     print('Data loaded from file: ...')
     print(myDataFrame)
 

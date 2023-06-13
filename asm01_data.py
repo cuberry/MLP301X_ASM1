@@ -2,7 +2,7 @@
 class "Exam_Data" is created with descriptions below:
     The initiated instance of Exam_Data is one DataFrame which was collect from class[1..].txt
     Check_student_code(..) is used to verify the valid code of student
-    Check_answer_quantity(..) is used to make sure the 25-answers
+    Check_answer_quantity(...) is used to make sure the 25-answers
     Export the grade score
     Export the analytic values
 """
